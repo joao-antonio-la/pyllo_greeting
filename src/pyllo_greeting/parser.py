@@ -1,6 +1,6 @@
 from argparse import ArgumentParser
-from pyllo.commands import credits, version
-from pyllo.commands import greet 
+from pyllo_greeting.commands import credits, version
+from pyllo_greeting.commands import greet 
 
 app_parser = ArgumentParser(
     prog="pyllo",

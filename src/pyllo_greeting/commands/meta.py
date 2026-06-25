@@ -2,7 +2,7 @@ from importlib import metadata
 
 def version():
     """Prints out the project's current version."""
-    print(metadata.version("pyllo"))
+    print(metadata.version("pyllo_greeting"))
     
     return 0
 
@@ -15,6 +15,6 @@ def credits():
     print("\thttps://github.com/joao-antonio-la")
 
     print("\nProject's Repository:")
-    print("\thttps://github.com/joao-antonio-la/pyllo")
+    print("\thttps://github.com/joao-antonio-la/pyllo_greeting")
 
     return 0

@@ -6,45 +6,27 @@ Simple CLI application created for studying Python apps distribution methods.
 
 > ⚠️ You must have python installed to use this application.
 
-1. Clone the repository:
-
-``` sh
-git clone https://github.com/joao-antonio-la/pyllo_greeting.git
-```
-
-- After cloning the repo, you are ready to use the application.
-
-## Usage
-
-With the application locally into your machine, you can use it by following the steps bellow:
-
-1. Enter the project folder:
-
-``` sh
-cd pyllo_greeting
-```
-
-2. Create the virtual environment:
+1. Create a virtual environment:
 
 ``` sh
 python -m venv .venv  # Windows
 python3 -m venv .venv # MacOS and Linux
 ```
 
-3. Activate the venv:
+2. Activate the venv:
 
 ``` sh
 .venv\Scripts\activate    # Windows
 source .venv/bin/activate # MacOS and Linux
 ```
 
-4. Install the project locally:
+3. Install the project:
 
 ``` sh
-pip install .
+pip install pyllo_greeting
 ```
 
-5. Use the CLI:
+4. Use the CLI:
 
 ``` sh
 pyllo

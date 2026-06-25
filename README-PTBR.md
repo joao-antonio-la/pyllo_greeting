@@ -6,51 +6,32 @@ Uma aplicação CLI simples criada para estudar métodos de distribuição de ap
 
 > ⚠️ Você precisa ter o Python instalado para usar esta aplicação.
 
-1. Clone o repositório:
+1. Crie um ambiente virtual:
 
 ``` sh
-git clone https://github.com/joao-antonio-la/pyllo_greeting.git
-```
-
-- Após clonar o repositório, você está pronto para usar a aplicação.
-
-## Como Usar
-
-Com a aplicação localmente na sua máquina, você pode utilizá-la seguindo os passos abaixo:
-
-1. Entre na pasta do projeto: 
-
-``` sh
-cd pyllo_greeting
-```
-
-2. Crie um ambiente virtual:
-
-``` sh
-python -m venv .venv # Windows
+python -m venv .venv  # Windows
 python3 -m venv .venv # MacOS e Linux
 ```
 
-3. Ative o ambiente:
+2. Ative o ambiente:
 
 ``` sh
 .venv\Scripts\activate    # Windows
 source .venv/bin/activate # MacOS e Linux
 ```
 
-4. Instale o projeto localmente:
+3. Instale o projeto:
 
 ``` sh
-pip install .
+pip install pyllo_greeting
 ```
 
-5. Use o CLI:
+4. Use o CLI:
 
 ``` sh
 pyllo
 # Saída: Hello there
 ```
-
 
 ### Opções
 

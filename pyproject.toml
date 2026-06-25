@@ -3,7 +3,7 @@ requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pyllo"
+name = "pyllo_greeting"
 description = "CLI application for testing Python distribution methods"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -15,13 +15,13 @@ license = "MIT"
 
 
 [project.urls]
-Homepage = "https://github.com/joao-antonio-la/pyllo"
+Homepage = "https://github.com/joao-antonio-la/pyllo_greeting"
 
 [project.scripts]
-pyllo = "pyllo.main:main"
+pyllo = "pyllo_greeting.main:main"
 
 [tool.setuptools.dynamic]
-version = {attr = "pyllo.__version__"}
+version = {attr = "pyllo_greeting.__version__"}
 
 [tool.setuptools]
 package-dir = {"" = "src"}

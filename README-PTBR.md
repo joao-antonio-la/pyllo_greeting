@@ -1,4 +1,4 @@
-# pyllo
+# pyllo_greeting
 
 Uma aplicação CLI simples criada para estudar métodos de distribuição de aplicativos Python.
 
@@ -9,7 +9,7 @@ Uma aplicação CLI simples criada para estudar métodos de distribuição de ap
 1. Clone o repositório:
 
 ``` sh
-git clone https://github.com/joao-antonio-la/pyllo.git
+git clone https://github.com/joao-antonio-la/pyllo_greeting.git
 ```
 
 - Após clonar o repositório, você está pronto para usar a aplicação.
@@ -21,7 +21,7 @@ Com a aplicação localmente na sua máquina, você pode utilizá-la seguindo os
 1. Entre na pasta do projeto: 
 
 ``` sh
-cd pyllo
+cd pyllo_greeting
 ```
 
 2. Crie um ambiente virtual:

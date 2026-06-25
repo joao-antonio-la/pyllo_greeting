@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyllo"
+description = "CLI application for testing Python distribution methods"
+readme = "README.md"
+requires-python = ">=3.10"
+dynamic = ["version"]
+authors = [
+    { name = "João Antônio" }
+]
+license = "MIT"
+
+
+[project.urls]
+Homepage = "https://github.com/joao-antonio-la/pyllo"
+
+[project.scripts]
+pyllo = "pyllo.main:main"
+
+[tool.setuptools.dynamic]
+version = {attr = "pyllo.__version__"}
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

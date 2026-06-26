@@ -49,6 +49,13 @@ pyllo everyone
 # Hello there, everyone
 ```
 
+> This argument is a string, therefore, in presence of empty spaces, it has to be passed in quotes:
+
+``` sh
+pyllo "Sergio and Sara"
+# Hello there, Sergio and Sara
+```
+
 - Secondly, there is also the possibity of informing a tone. The default tone is "normal":
 
 1. `Normal/Default`:

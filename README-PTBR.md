@@ -49,6 +49,13 @@ pyllo everyone
 # Hello there, everyone
 ```
 
+> Esse argumento é uma string, logo, caso haja espaços, deve ser passado entre aspas:
+
+``` sh
+pyllo "Sergio and Sara"
+# Hello there, Sergio and Sara
+```
+
 - Além disso, também há a possibilidade de informar um tom. O tom padrão é o "normal":
 
 1. `Normal/Padrão`:

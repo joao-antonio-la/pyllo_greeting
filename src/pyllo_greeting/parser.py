@@ -1,6 +1,6 @@
 from argparse import ArgumentParser
 from pyllo_greeting.commands import credits, version
-from pyllo_greeting.commands import greet 
+from pyllo_greeting.commands import greet, random_greet
 
 app_parser = ArgumentParser(
     prog="pyllo",
@@ -9,6 +9,9 @@ app_parser = ArgumentParser(
 
 # Positional argument: name. Whatever the app will greet.
 app_parser.add_argument("name", type=str, nargs="?", help="Name of the person to greet")
+
+# Random greet flag
+app_parser.add_argument("-r", "--random", action="store_true", help="Greet with a random phrase")
 
 # Separate flags for tones
 app_parser.add_argument("-q", "--quick", action="store_true", help="Greet with a quick tone")
@@ -26,6 +29,9 @@ def run():
         return version()
     elif args.credits:
         return credits()
+    
+    if args.random:
+        return random_greet(name=args.name)
     
     tone = "normal"
     if args.quick:

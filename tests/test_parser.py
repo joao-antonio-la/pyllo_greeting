@@ -8,7 +8,7 @@ def test_cli_version(monkeypatch, capsys):
     
     run()
     captured = capsys.readouterr()
-    assert "1.1.1" in captured.out
+    assert "1.1.2" in captured.out
 
 
 def test_cli_greeting_with_name_and_tone(monkeypatch, capsys):

@@ -109,7 +109,7 @@ Atualmente existem duas opções `meta`:
 
 ``` sh
 pyllo -v
-# 1.1.0
+# 1.1.1
 ```
 
 2. `Créditos do App (--credits | -c)`:

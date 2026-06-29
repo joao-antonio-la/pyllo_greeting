@@ -7,7 +7,7 @@ def test_version_output(capsys):
     captured = capsys.readouterr()
     
     assert exit_code == 0
-    assert captured.out.strip() == "1.1.0"
+    assert captured.out.strip() == "1.1.1"
 
 def test_credits_output(capsys):
     """Ensure credits output contains key author details."""

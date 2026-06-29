@@ -146,7 +146,7 @@ jobs:
             --clean \
             --noconfirm \
             --name pyllo \
-            src/pyllo_greeting/cli.py
+            src/pyllo_greeting/main.py
 
       - name: Package executable (Linux/macOS)
         if: runner.os != 'Windows'

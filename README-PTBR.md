@@ -85,6 +85,22 @@ pyllo Beatrice -f
 # Greetings. It is truly a pleasure to acknowledge your existence, Beatrice
 ```
 
+#### Random Greet
+
+Ao usar o programa com a flag `--random | -r`, o CLI irá exibir uma frase de cumprimento aleatória.  
+Essa frase pode ser uma das padrões (normal, rápida e elegante) ou uma completamente diferente.
+
+``` sh
+pyllo Antony --random
+# Output: System check complete. Welcome, Antony.
+
+pyllo Mary --random
+# Output: Greetings, Mary.
+
+pyllo Mark --random
+# Output: What's up, Mark?
+```
+
 #### Meta Opções
 
 Atualmente existem duas opções `meta`:
@@ -93,7 +109,7 @@ Atualmente existem duas opções `meta`:
 
 ``` sh
 pyllo -v
-# 0.1.0
+# 1.1.0
 ```
 
 2. `Créditos do App (--credits | -c)`:

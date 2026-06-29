@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   test:
-    name: Validate release
+    name: Validate Release
     runs-on: ubuntu-latest
     timeout-minutes: 2
 
@@ -73,6 +73,7 @@ jobs:
             --generate-notes
 
   publish-pypi:
+    name: Publish on PyPI
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -100,3 +101,96 @@ jobs:
 
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
+
+  build-binaries:
+    name: Build executables
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+
+    needs: publish-pypi
+
+    strategy:
+      fail-fast: false
+
+      matrix:
+        include:
+          - os: ubuntu-latest
+            archive: pyllo-linux-x86_64.tar.gz
+
+          - os: windows-latest
+            archive: pyllo-windows-x86_64.zip
+
+          - os: macos-latest
+            archive: pyllo-macos-x86_64.tar.gz
+
+      steps:
+        - name: Checkout source code
+          uses: actions/checkout@v4
+
+        - name: Set up Python
+          uses: actions/setup-python@v5
+          with:
+            python-version: "3.13"
+            cache: pip
+
+        - name: Install dependencies
+          run: |
+            python -m pip install --upgrade pip setuptools wheel
+            python -m pip install pyinstaller
+            python -m pip install -e .
+
+        - name: Build executable
+          run: |
+            pyinstaller \
+              --onefile \
+              --clean \
+              --noconfirm \
+              --name pyllo \
+              src/pyllo_greeting/cli.py
+
+        - name: Package executable (Linux/macOS)
+          if: runner.os != 'Windows'
+          run: |
+            tar -czf "${{ matrix.archive }}" \
+              -C dist \
+              pyllo
+
+        - name: Package executable (Windows)
+          if: runner.os == 'Windows'
+          shell: pwsh
+          run: |
+            Compress-Archive `
+              -Path dist\pyllo.exe `
+              -DestinationPath "${{ matrix.archive }}"
+
+        - name: Upload packaged executable
+          uses: actions/upload-artifact@v4
+          with:
+            name: ${{ matrix.archive }}
+            path: ${{ matrix.archive }}
+
+  upload-binaries:
+    name: Upload executables to Release
+
+    runs-on: ubuntu-latest
+
+    needs: build-binaries
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Upload executables to GitHub Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          find artifacts -type f -print
+
+          gh release upload "${{ github.ref_name }}" \
+            artifacts/**/* \
+            --clobber

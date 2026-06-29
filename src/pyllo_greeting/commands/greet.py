@@ -38,11 +38,10 @@ def random_greet(name: str = None) -> int:
         f"It is an absolute honor to acknowledge your presence{name_suffix}.",
         f"Good day{name_suffix}.",
         f"Salutations{name_suffix}.",
-        f"Hello World! Special shoutout to{name_suffix}.",
+        f"Hello World! Special shoutout to you{name_suffix}.",
         f"Ahoy{name_suffix}!",
         f"Look who just spawned into the terminal{name_suffix}.",
         f"System check complete. Welcome{name_suffix}.",
-        f"Initiating greeting sequence for{name_suffix}.",
     ]
     
     print(random.choice(phrases))

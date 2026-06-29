@@ -123,51 +123,51 @@ jobs:
           - os: macos-latest
             archive: pyllo-macos-x86_64.tar.gz
 
-      steps:
-        - name: Checkout source code
-          uses: actions/checkout@v4
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
 
-        - name: Set up Python
-          uses: actions/setup-python@v5
-          with:
-            python-version: "3.13"
-            cache: pip
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
 
-        - name: Install dependencies
-          run: |
-            python -m pip install --upgrade pip setuptools wheel
-            python -m pip install pyinstaller
-            python -m pip install -e .
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip setuptools wheel
+          python -m pip install pyinstaller
+          python -m pip install -e .
 
-        - name: Build executable
-          run: |
-            pyinstaller \
-              --onefile \
-              --clean \
-              --noconfirm \
-              --name pyllo \
-              src/pyllo_greeting/cli.py
+      - name: Build executable
+        run: |
+          pyinstaller \
+            --onefile \
+            --clean \
+            --noconfirm \
+            --name pyllo \
+            src/pyllo_greeting/cli.py
 
-        - name: Package executable (Linux/macOS)
-          if: runner.os != 'Windows'
-          run: |
-            tar -czf "${{ matrix.archive }}" \
-              -C dist \
-              pyllo
+      - name: Package executable (Linux/macOS)
+        if: runner.os != 'Windows'
+        run: |
+          tar -czf "${{ matrix.archive }}" \
+            -C dist \
+            pyllo
 
-        - name: Package executable (Windows)
-          if: runner.os == 'Windows'
-          shell: pwsh
-          run: |
-            Compress-Archive `
-              -Path dist\pyllo.exe `
-              -DestinationPath "${{ matrix.archive }}"
+      - name: Package executable (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          Compress-Archive `
+            -Path dist\pyllo.exe `
+            -DestinationPath "${{ matrix.archive }}"
 
-        - name: Upload packaged executable
-          uses: actions/upload-artifact@v4
-          with:
-            name: ${{ matrix.archive }}
-            path: ${{ matrix.archive }}
+      - name: Upload packaged executable
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.archive }}
+          path: ${{ matrix.archive }}
 
   upload-binaries:
     name: Upload executables to Release
